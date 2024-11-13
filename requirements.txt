@@ -11,3 +11,5 @@ pdf2image
 latex2mathml
 matplotlib
 pandas
+pyperclip
+platform
