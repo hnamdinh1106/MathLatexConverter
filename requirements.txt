@@ -14,5 +14,5 @@ pandas
 pyperclip
 openai
 webdriver-manager 
-
+selenium 
 
