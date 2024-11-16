@@ -13,5 +13,6 @@ matplotlib
 pandas
 pyperclip
 openai
-webdriver-
+webdriver-manager 
+
 
