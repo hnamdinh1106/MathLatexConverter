@@ -12,4 +12,6 @@ latex2mathml
 matplotlib
 pandas
 pyperclip
+openai
+webdriver-
 
