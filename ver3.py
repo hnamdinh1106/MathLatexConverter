@@ -56,13 +56,27 @@ class OCRProcessor:
         # Ngưỡng hóa
         thresh = cv2.threshold(blurred, 0, 255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)[1]
         return thresh
+    
 
     @staticmethod
     def extract_text_from_image(image):
-        preprocessed_image = OCRProcessor.preprocess_image(image)
-        text = pytesseract.image_to_string(preprocessed_image, lang='eng')
-        return text
-
+        try:
+            # Thử Tesseract trước
+            preprocessed_image = OCRProcessor.preprocess_image(image)
+            text = pytesseract.image_to_string(preprocessed_image, lang='eng')
+            
+            if not text.strip():
+                # Nếu Tesseract không nhận diện được, chuyển sang EasyOCR
+                reader = easyocr.Reader(['en'])
+                results = reader.readtext(image)
+                text = ' '.join([result[1] for result in results])
+            
+            return text.strip()
+        
+        except Exception as e:
+            print(f"Lỗi OCR: {e}")
+            return "Không thể trích xuất văn bản từ ảnh"
+        
 class MathSolverGPT:
     def __init__(self, api_key):
         self.api_key = "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"
