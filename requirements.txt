@@ -15,4 +15,5 @@ pyperclip
 openai
 webdriver-manager 
 selenium 
+rapid_latex_ocr
 
